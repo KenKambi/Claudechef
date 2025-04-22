@@ -21,6 +21,8 @@ export default function Recipe (){
         event.target.reset()
         
     }
+
+    //console.log(typeof(ingredients))
   
 
     return(
@@ -31,18 +33,26 @@ export default function Recipe (){
                 </label>
                 <button > &#43; Add ingredient</button> 
             </form>
-            <h1>Ingredients on hand...</h1>
+
+            { ingredients.length <= 3 &&
+                <p> Enter a list of at least three (3) ingredients above ...</p>
+            }
+
+            {ingredients.length > 0  && <h1>Ingredients on hand...</h1>}
+
             <ol>
                 {ing}
             </ol>
 
+            { ingredients.length > 3 ? 
             <div className="generate-container">
                 <div>
                     <h3>Ready for a recipe?</h3>
                     <p>Generate a recipe from your list of ingredients.</p>
                 </div>
                 <button> Get a recipe </button>
-            </div>
+            </div> : null 
+            }
         </main>
     )
 }
