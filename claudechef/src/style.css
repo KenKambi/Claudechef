@@ -8,14 +8,21 @@ button{
     
 }
 
-
-.navbar{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-    box-shadow: 0 4px 8px grey;
+/* header{
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    } */
     
+    
+    .navbar{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        box-shadow: 0 4px 8px grey;
+        z-index: 100;
+        
 }
 
 .navbar > img{
@@ -32,7 +39,8 @@ button{
 }
 
 .main-container{
-    margin: 20px;
+   margin: 30px;
+    
 }
 
 .entry-container > button{
