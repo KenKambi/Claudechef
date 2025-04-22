@@ -12,12 +12,14 @@ export default function Recipe (){
     function handleIngredient (event) {
         event.preventDefault()
         const formData = new FormData(event.target)
-        const newer = formData.get("ingredient") 
+        const newerIng = formData.get("ingredient") 
         
         setIngredients(function (prevIng) {
-            return [...prevIng, newer ]
-          })
-     
+            return [...prevIng, newerIng ]
+        })
+        
+        event.target.reset()
+        
     }
   
 
@@ -27,16 +29,11 @@ export default function Recipe (){
                 <label htmlFor="ingredient">
                     <input  name="ingredient" type="text" placeholder="Eg. Tomatoes" required/>
                 </label>
-                <button  > &#43; Add ingredient</button> 
+                <button > &#43; Add ingredient</button> 
             </form>
-            <h1>Ingredents on hand</h1>
+            <h1>Ingredients on hand...</h1>
             <ol>
                 {ing}
-                <li></li>
-                <li>Tomatoes</li>
-                <li>Tomatoes</li>
-                <li>Tomatoes</li>
-                <li>Tomatoes</li>
             </ol>
 
             <div className="generate-container">
