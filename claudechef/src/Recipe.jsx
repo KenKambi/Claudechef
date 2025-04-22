@@ -1,21 +1,42 @@
+import { useState } from "react"
 
 
 export default function Recipe (){
 
+    const [ingredients, setIngredients] = useState([])
+
+    const ing = ingredients.map((ingredient) => { 
+        return <li key={ingredient}> {ingredient} </li>
+    })
+
+    function handleIngredient (event) {
+        event.preventDefault()
+        const formData = new FormData(event.target)
+        const newer = formData.get("ingredient") 
+        
+        setIngredients(function (prevIng) {
+            return [...prevIng, newer ]
+          })
+     
+    }
+  
+
     return(
         <main className="main-container">
-            <div className="entry-container">
-                <input type="text" placeholder="Enter ingredient" required/>
-                <button>Add ingredient</button>
-            </div>
+            <form className="entry-container" onSubmit={handleIngredient}>
+                <label htmlFor="ingredient">
+                    <input  name="ingredient" type="text" placeholder="Eg. Tomatoes" required/>
+                </label>
+                <button  > &#43; Add ingredient</button> 
+            </form>
             <h1>Ingredents on hand</h1>
             <ol>
-                <li>Tomatos</li>
-                <li>Tomatos</li>
-                <li>Tomatos</li>
-                <li>Tomatos</li>
-                <li>Tomatos</li>
-                <li>Tomatos</li>
+                {ing}
+                <li></li>
+                <li>Tomatoes</li>
+                <li>Tomatoes</li>
+                <li>Tomatoes</li>
+                <li>Tomatoes</li>
             </ol>
 
             <div className="generate-container">
