@@ -1,7 +1,8 @@
 import { useState } from "react";
+import Generated from "./Generated";
 
-export default function Recipe() {
-  const [ingredients, setIngredients] = useState([]);
+export default function Recipe() { 
+  const [ingredients, setIngredients] = useState(["onions", "pineaple", "tomatoes", "potatoes"]);
   const [generate, setGenerate] = useState(false);
 
   const ing = ingredients.map((ingredient) => {
@@ -25,7 +26,7 @@ export default function Recipe() {
   function getRecipe() {
     setGenerate((prevGenerate) => !prevGenerate);
   }
-  console.log(generate);
+ 
 
   return (
     <main className="main-container">
@@ -59,37 +60,7 @@ export default function Recipe() {
         </div>
       ) : null}
 
-      {generate && <div id="recipeOutput">
-        <h2 id="recipeTitle">Recipe Name</h2>
-
-        <p id="recipeDescription">
-          A delicious twist on your everyday meal 🍽️✨ – easy to make and hard
-          to forget!
-        </p>
-
-        <h3>Ingredients</h3>
-        <ul id="ingredientList">
-          <li>Tomatoes</li>
-          <li>Onions</li>
-          <li>Garlic</li>
-          <li>Suggested: Olive oil</li>
-        </ul>
-
-        <h3>Preparation</h3>
-        <ol id="preparationSteps">
-          <li>Chop all vegetables finely.</li>
-          <li>Heat olive oil in a pan and sauté garlic until golden.</li>
-          <li>Add onions and cook until translucent.</li>
-          <li>Add tomatoes and simmer for 15 minutes.</li>
-        </ol>
-
-        <h3>How to Serve & Enjoy</h3>
-        <p id="serveTips">
-          Serve hot with a slice of toasted bread 🥖 or over freshly cooked
-          pasta 🍝. Top it with a sprinkle of parmesan 🧀 and enjoy with a glass
-          of wine or your favorite drink! 🍷😋
-        </p>
-      </div>}
+      <Generated generate={generate}  />
     </main>
   );
 }
