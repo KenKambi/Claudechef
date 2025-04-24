@@ -58,7 +58,7 @@ export default function Recipe() {
           </div>
           <button onClick={getRecipe}> {!generate ? "Get a" : "Hide"} recipe </button>
         </div>
-      ) : null}
+      ) : undefined }
 
       <Generated generate={generate}  />
     </main>
