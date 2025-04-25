@@ -21,7 +21,6 @@ export default function Recipe() {
     event.target.reset();
   }
 
-  //console.log(typeof(ingredients))
 
   function getRecipe() {
     setGenerate((prevGenerate) => !prevGenerate);
@@ -60,7 +59,7 @@ export default function Recipe() {
         </div>
       ) : undefined }
 
-      <Generated generate={generate}  />
+      { generate && <Generated />} 
     </main>
   );
 }

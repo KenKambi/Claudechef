@@ -1,10 +1,12 @@
 export default function Generated(props) {
   return (
-    < >
-      <div id="recipeOutput">
+    <div id="recipeOutput">
       <h2 id="recipeTitle">Recipe Name</h2>
 
-      <p id="recipeDescription" style={{fontStyle: "italic", color: "black", marginTop: "-10px"}}>
+      <p
+        id="recipeDescription"
+        style={{ fontStyle: "italic", color: "black", marginTop: "-10px" }}
+      >
         A delicious twist on your everyday meal 🍽️✨ – easy to make and hard to
         forget!
       </p>
@@ -32,6 +34,5 @@ export default function Generated(props) {
         or your favorite drink! 🍷😋
       </p>
     </div>
-    </>
   );
 }
