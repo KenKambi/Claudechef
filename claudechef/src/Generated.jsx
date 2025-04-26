@@ -1,10 +1,9 @@
 export default function Generated(props) {
   return (
-    <div id="recipeOutput">
+    <div>
       <h2 id="recipeTitle">Recipe Name</h2>
 
       <p
-        id="recipeDescription"
         style={{ fontStyle: "italic", color: "black", marginTop: "-10px" }}
       >
         A delicious twist on your everyday meal 🍽️✨ – easy to make and hard to
@@ -12,7 +11,7 @@ export default function Generated(props) {
       </p>
 
       <h3>Ingredients</h3>
-      <ul id="ingredientList">
+      <ul>
         <li>Tomatoes</li>
         <li>Onions</li>
         <li>Garlic</li>
@@ -20,7 +19,7 @@ export default function Generated(props) {
       </ul>
 
       <h3>Preparation</h3>
-      <ol id="preparationSteps">
+      <ol>
         <li>Chop all vegetables finely.</li>
         <li>Heat olive oil in a pan and sauté garlic until golden.</li>
         <li>Add onions and cook until translucent.</li>
@@ -28,7 +27,7 @@ export default function Generated(props) {
       </ol>
 
       <h3>How to Serve & Enjoy</h3>
-      <p id="serveTips">
+      <p>
         Serve hot with a slice of toasted bread 🥖 or over freshly cooked pasta
         🍝. Top it with a sprinkle of parmesan 🧀 and enjoy with a glass of wine
         or your favorite drink! 🍷😋
