@@ -1,7 +1,7 @@
 export default function Generated(props) {
   return (
     <div>
-      <h2 id="recipeTitle">Recipe Name</h2>
+      <h2>Recipe Name</h2>
 
       <p
         style={{ fontStyle: "italic", color: "black", marginTop: "-10px" }}
