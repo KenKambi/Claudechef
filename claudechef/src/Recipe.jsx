@@ -1,8 +1,13 @@
 import { useState } from "react";
 import Generated from "./Generated";
 
-export default function Recipe() { 
-  const [ingredients, setIngredients] = useState(["onions", "pineaple", "tomatoes", "potatoes"]);
+export default function Recipe() {
+  const [ingredients, setIngredients] = useState([
+    "tomatoes",
+    "onions",
+    "ginger",
+    "garlic",
+  ]);
   const [generate, setGenerate] = useState(false);
 
   const ing = ingredients.map((ingredient) => {
@@ -21,11 +26,9 @@ export default function Recipe() {
     event.target.reset();
   }
 
-
   function getRecipe() {
     setGenerate((prevGenerate) => !prevGenerate);
   }
- 
 
   return (
     <main className="main-container">
@@ -55,11 +58,13 @@ export default function Recipe() {
             <h3>Ready for a recipe?</h3>
             <p>Generate a recipe from your list of ingredients.</p>
           </div>
-          <button onClick={getRecipe}> {!generate ? "Get a" : "Hide"} recipe </button>
+          <button onClick={getRecipe}>
+            {!generate ? "Get a" : "Hide"} recipe{" "}
+          </button>
         </div>
-      ) : undefined }
+      ) : undefined}
 
-      { generate && <Generated />} 
+      {generate && <Generated />}
     </main>
   );
 }
