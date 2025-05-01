@@ -1,4 +1,4 @@
-export default function Generated(props) {
+export default function Generated() {
   return (
     <div>
       <h2>Recipe Name</h2>
