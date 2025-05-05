@@ -7,6 +7,7 @@ export default function Recipe() {
     "onions",
     "ginger",
     "garlic",
+    "tumeric",
   ]);
   const [generate, setGenerate] = useState(false);
 
