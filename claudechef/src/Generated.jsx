@@ -3,8 +3,11 @@ import ReactMarkdown from 'react-markdown'
 
 export default function Generated(props) {
   return (
-    <ReactMarkdown>
-      {props.generate}
-    </ReactMarkdown>
+    <>
+      <h2>Calude Chef Recommends: </h2>
+      <ReactMarkdown>
+        {props.generate}
+      </ReactMarkdown>
+    </>
   );
 }
