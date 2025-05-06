@@ -67,7 +67,7 @@ export default function Recipe() {
         </div>
       ) : undefined}
 
-      {!loading ? <img className="loading" src="src/Circles-menu-3.gif" alt="Loading..." /> : ""}
+      {!loading ? <div className="loading"> <img  src="src/Circles-menu-3.gif" alt="Loading..." /> </div> : ""}
 
       {generate ?  <Generated generate = {generate} /> : ""}
     </main>
