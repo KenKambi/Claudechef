@@ -34,7 +34,7 @@ export async function deepseekGetRecipe(ingredientsArray) {
       return data.choices[0].message.content
     }
     catch(error){
-        console.erroe("Error fetching recipe:", error)
+        console.error("Error fetching recipe:", error)
     };
 }
 
