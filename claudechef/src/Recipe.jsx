@@ -4,11 +4,7 @@ import { deepseekGetRecipe } from "./deepseek";
 
 export default function Recipe() {
   const [ingredients, setIngredients] = useState([
-    "tomatoes",
-    "onions",
-    "ginger",
-    "garlic",
-    "tumeric",
+ 
   ]);
   const [generate, setGenerate] = useState("");
 
@@ -48,6 +44,8 @@ export default function Recipe() {
         <button> &#43; Add ingredient</button>
       </form>
 
+      <div> <img src="src/Circles-menu-3.gif" alt="Loading" /> </div>
+
       {ingredients.length <= 3 && (
         <p> Enter a list of at least three (3) ingredients above ...</p>
       )}
@@ -63,7 +61,7 @@ export default function Recipe() {
             <p>Generate a recipe from your list of ingredients.</p>
           </div>
           <button onClick={getRecipe}>
-            {!generate ? "Get a" : "Hide"} recipe{" "}
+            {!generate ? "Get a" : "Regenerate"} recipe{" "}
           </button>
         </div>
       ) : undefined}
