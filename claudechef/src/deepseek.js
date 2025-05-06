@@ -3,6 +3,7 @@
 const systemPrompt = `I am an ai assistant tasked with the role of generating a recipe \
                     based on the list of ingredints given. \
                     Use them plus other suggested ingredients to generate a recipe. \
+                    Make it interesting and use emojis. \
                     Convert it into markdown in order to be rendered on a website page.`
 
 export async function deepseekGetRecipe(ingredientsArray) {
