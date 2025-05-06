@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Generated from "./Generated";
+import { deepseekGetRecipe } from "./deepseek";
 
 export default function Recipe() {
   const [ingredients, setIngredients] = useState([
@@ -9,7 +10,7 @@ export default function Recipe() {
     "garlic",
     "tumeric",
   ]);
-  const [generate, setGenerate] = useState(false);
+  const [generate, setGenerate] = useState("");
 
   const ing = ingredients.map((ingredient) => {
     return <li key={ingredient}> {ingredient} </li>;
@@ -27,8 +28,10 @@ export default function Recipe() {
     event.target.reset();
   }
 
-  function getRecipe() {
-    setGenerate((prevGenerate) => !prevGenerate);
+ async function getRecipe() {
+   // setGenerate((prevGenerate) => !prevGenerate);
+    const ans = await deepseekGetRecipe(ingredients)
+    setGenerate(ans)
   }
 
   return (
@@ -65,7 +68,7 @@ export default function Recipe() {
         </div>
       ) : undefined}
 
-      {generate && <Generated />}
+      {generate ?  <Generated generate = {generate} /> : ""}
     </main>
   );
 }
