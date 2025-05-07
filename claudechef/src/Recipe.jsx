@@ -8,8 +8,8 @@ export default function Recipe() {
   const [generate, setGenerate] = useState("");
   const [loading, setLoading] = useState(false)
 
-  const ing = ingredients.map((ingredient) => {
-    return <li key={ingredient}> {ingredient} </li>;
+  const ing = ingredients.map((ingredient, index) => {
+    return <li key={index}   > {ingredient} </li>;
   });
 
   function handleIngredient(event) {
@@ -23,6 +23,12 @@ export default function Recipe() {
 
     event.target.reset();
   }
+
+  // function removeIngredient (itemRemove){
+  //   setIngredients((prevIng) => {
+  //     prevIng.filter( (index)=> index !== itemRemove)
+  //   })
+  // }
 
  async function getRecipe() {
    // setGenerate((prevGenerate) => !prevGenerate);
