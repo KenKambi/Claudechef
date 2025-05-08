@@ -1,6 +1,6 @@
 
 
-const systemPrompt = `I am an ai assistant tasked with the role of generating a recipe \
+const SYSTEM_PROMPT = `I am an ai assistant tasked with the role of generating a recipe \
                     based on the list of ingredints given. \
                     Use them plus other suggested ingredients to generate a recipe. \
                     Make it interesting and use emojis. \
@@ -24,7 +24,7 @@ export async function deepseekGetRecipe(ingredientsArray) {
           "messages": [
             {
               "role": "system",
-              "content": systemPrompt
+              "content": SYSTEM_PROMPT
             },
             {
                 "role": "user",

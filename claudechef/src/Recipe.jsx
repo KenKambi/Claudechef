@@ -17,7 +17,7 @@ export default function Recipe() {
     const formData = new FormData(event.target);
     const newerIng = formData.get("ingredient");
 
-    setIngredients(function (prevIng) {
+    setIngredients(function (prevIng) { 
       return [...prevIng, newerIng];
     });
 
