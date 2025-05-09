@@ -1,15 +1,15 @@
 import { useState } from "react";
 import Generated from "./Generated";
 import { deepseekGetRecipe } from "./deepseek";
-import loadingGif from "./assets/Circles-menu-3.gif"
+import loadingGif from "./assets/Circles-menu-3.gif";
 
 export default function Recipe() {
   const [ingredients, setIngredients] = useState([]);
   const [generate, setGenerate] = useState("");
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const ing = ingredients.map((ingredient, index) => {
-    return <li key={index}   > {ingredient} </li>;
+    return <li key={index}> {ingredient} </li>;
   });
 
   function handleIngredient(event) {
@@ -17,7 +17,7 @@ export default function Recipe() {
     const formData = new FormData(event.target);
     const newerIng = formData.get("ingredient");
 
-    setIngredients(function (prevIng) { 
+    setIngredients(function (prevIng) {
       return [...prevIng, newerIng];
     });
 
@@ -30,12 +30,12 @@ export default function Recipe() {
   //   })
   // }
 
- async function getRecipe() {
-   // setGenerate((prevGenerate) => !prevGenerate);
-    setLoading(true)
-    const ans = await deepseekGetRecipe(ingredients)
-    setGenerate(ans)
-    setLoading(false)
+  async function getRecipe() {
+    // setGenerate((prevGenerate) => !prevGenerate);
+    setLoading(true);
+    const ans = await deepseekGetRecipe(ingredients);
+    setGenerate(ans);
+    setLoading(false);
   }
 
   return (
@@ -52,7 +52,7 @@ export default function Recipe() {
         <button> &#43; Add ingredient</button>
       </form>
 
-      <div>  </div>
+      <div> </div>
 
       {ingredients.length <= 3 && (
         <p> Enter a list of at least three (3) ingredients above ...</p>
@@ -74,9 +74,16 @@ export default function Recipe() {
         </div>
       ) : undefined}
 
-      {loading ? <div className="loading"> <img  src={loadingGif} alt="Loading..." /> </div> : ""}
+      {loading ? (
+        <div className="loading">
+          {" "}
+          <img src={loadingGif} alt="Loading..." />{" "}
+        </div>
+      ) : (
+        ""
+      )}
 
-      {generate ?  <Generated generate = {generate} /> : ""}
+      {generate ? <Generated generate={generate} /> : ""}
     </main>
   );
 }
