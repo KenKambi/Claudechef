@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Generated from "./Generated";
 import { deepseekGetRecipe } from "./deepseek";
 import loadingGif from "./assets/Circles-menu-3.gif";
@@ -7,6 +7,7 @@ export default function Recipe() {
   const [ingredients, setIngredients] = useState([]);
   const [generate, setGenerate] = useState("");
   const [loading, setLoading] = useState(false);
+  const recipeSection = useRef(null)
 
   const ing = ingredients.map((ingredient, index) => {
     return <li key={index}> {ingredient} </li>;
@@ -38,6 +39,12 @@ export default function Recipe() {
     setLoading(false);
   }
 
+  useEffect(() => {
+    if (generate !== "" && recipeSection !== null){
+      recipeSection.current.scrollIntoView({behavior : "smooth"})
+    }
+  }, [generate])
+
   return (
     <main className="main-container">
       <form className="entry-container" onSubmit={handleIngredient}>
@@ -63,7 +70,7 @@ export default function Recipe() {
       <ol>{ing}</ol>
 
       {ingredients.length > 3 ? (
-        <div className="generate-container">
+        <div ref={recipeSection} className="generate-container">
           <div>
             <h3>Ready for a recipe?</h3>
             <p>Generate a recipe from your list of ingredients.</p>
