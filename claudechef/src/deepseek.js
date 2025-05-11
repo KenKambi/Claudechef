@@ -27,7 +27,7 @@ export async function deepseekGetRecipe(ingredientsArray) {
             },
             {
               role: "user",
-              content: `I have ${ingredientsString} . Please give me a recipe you'd recommend I make.`,
+              content: `I have ${ingredientsString}. Please give me a recipe you'd recommend I make.`,
             },
           ],
         }),
