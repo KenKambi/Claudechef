@@ -4,13 +4,13 @@ import { deepseekGetRecipe } from "./deepseek";
 import loadingGif from "./assets/Circles-menu-3.gif";
 
 export default function Recipe() {
-  const [ingredients, setIngredients] = useState([]);
+  const [ingredients, setIngredients] = useState(["meat", "vegetable oil", "onions", "tomatoes", "black pepper"]);
   const [generate, setGenerate] = useState("");
   const [loading, setLoading] = useState(false);
   const recipeSection = useRef(null)
 
   const ing = ingredients.map((ingredient, index) => {
-    return <li key={index}> {ingredient} </li>;
+    return <li key={index} onClick={() => {removeIngredient(index)}}> {ingredient} </li>;
   });
 
   function handleIngredient(event) {
@@ -25,11 +25,11 @@ export default function Recipe() {
     event.target.reset();
   }
 
-  // function removeIngredient (itemRemove){
-  //   setIngredients((prevIng) => {
-  //     prevIng.filter( (index)=> index !== itemRemove)
-  //   })
-  // }
+  function removeIngredient (itemRemove){
+    setIngredients((prevIng) => {
+     return prevIng.filter( (_, index)=> index !== itemRemove)
+    })
+  }
 
   async function getRecipe() {
     // setGenerate((prevGenerate) => !prevGenerate);
@@ -59,8 +59,7 @@ export default function Recipe() {
         <button> &#43; Add ingredient</button>
       </form>
 
-      <div> </div>
-
+      
       {ingredients.length <= 3 && (
         <p> Enter a list of at least three (3) ingredients above ...</p>
       )}
