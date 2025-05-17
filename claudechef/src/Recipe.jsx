@@ -25,6 +25,7 @@ export default function Recipe() {
     event.target.reset();
   }
 
+//Function to remove an item on the list
   function removeIngredient (itemRemove){
     setIngredients((prevIng) => {
      return prevIng.filter( (_, index)=> index !== itemRemove)
