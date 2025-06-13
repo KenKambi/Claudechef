@@ -1,10 +1,10 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+
 }
 
-button,
-li {
+button {
   cursor: pointer;
 }
 
@@ -42,9 +42,34 @@ header {
 }
 
 .main-container {
-  margin: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
   margin-top: 70px;
 }
+
+
+
+.main-container ol > li {
+  margin-bottom: 5px;
+
+}
+
+.main-container ol > li > button {
+  margin-left: 35px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: rgb(129, 40, 40);
+  color: antiquewhite;
+}
+
+
+.main-container ol > li > span {
+   border: 1px solid gainsboro;
+   width: 2px;
+   margin-left: 30px;
+}
+
 
 .entry-container > button {
   background-color: black;
@@ -56,6 +81,7 @@ header {
   display: flex;
   justify-content: space-around;
   border-radius: 10px;
+  padding: 7px;
 }
 
 .generate-container > button {
@@ -65,6 +91,13 @@ header {
   margin-top: 25px;
   border-radius: 10px;
   border: none;
+}
+
+@media (max-width: 700px){
+  .generate-container{
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .loading {

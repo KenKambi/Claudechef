@@ -10,7 +10,7 @@ export default function Recipe() {
   const recipeSection = useRef(null)
 
   const ing = ingredients.map((ingredient, index) => {
-    return <li key={index} onClick={() => {removeIngredient(index)}}> {ingredient} </li>;
+    return <li key={index} > {ingredient} <span></span> <button onClick={() => {removeIngredient(index)}}> Delete </button> </li>;
   });
 
   function handleIngredient(event) {
