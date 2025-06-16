@@ -4,7 +4,7 @@ import { deepseekGetRecipe } from "./deepseek";
 import loadingGif from "./assets/Circles-menu-3.gif";
 
 export default function Recipe() {
-  const [ingredients, setIngredients] = useState(["meat", "vegetable oil", "onions", "tomatoes", "black pepper"]);
+  const [ingredients, setIngredients] = useState([]);
   const [generate, setGenerate] = useState("");
   const [loading, setLoading] = useState(false);
   const recipeSection = useRef(null)

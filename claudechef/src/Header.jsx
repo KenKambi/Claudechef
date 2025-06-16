@@ -1,5 +1,4 @@
 import icon from "../src/assets/react.svg"
-
 export default function Header() {
   return (
     <header>
