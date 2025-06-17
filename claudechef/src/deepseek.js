@@ -16,8 +16,8 @@ export async function deepseekGetRecipe(ingredientsArray) {
         method: "POST",
         headers: {
           Authorization: `Bearer ${deepseekKey} `,
-          "HTTP-Referer": "<YOUR_SITE_URL>", // Optional. Site URL for rankings on openrouter.ai.
-          "X-Title": "<YOUR_SITE_NAME>", // Optional. Site title for rankings on openrouter.ai.
+          "HTTP-Referer": "https://kenkambi.github.io/claudechef", // Optional. Site URL for rankings on openrouter.ai.
+          "X-Title": "Claude Chef", // Optional. Site title for rankings on openrouter.ai.
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
