@@ -1,43 +1,66 @@
+const SYSTEM_PROMPT = `I am an ai assistant tasked with the role of generating a recipe \
+                    based on the list of ingredints given. \
+                    Use them plus other suggested ingredients to generate a recipe. \
+                    Make it interesting and use emojis. \
+                    Convert it into markdown in order to be rendered on a website page. \
+                    Also, don't mention that you are an AI bot`;
 
-export async function handler (event){
-    const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
+export async function handler(event) {
+  const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 
-    if (!OPENROUTER_API_KEY){
-        return {
-            statusCode: 500,
-            body: JSON.stringify({error: "API key not found!"}),
-        }
+  if (!OPENROUTER_API_KEY) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: "API key not found!" }),
+    };
+  }
+  try {
+    const { ingredients } = JSON.parse(event.body || "{}");
+
+    if (!Array.isArray(ingredients)) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: "Ingredients must be an array." }),
+      };
     }
 
-    const {ingredients} = JSON.parse(event.body || "{}");
+    const ingredientsString = ingredients.join(", ");
 
-    const response = await fetch ("https://openrouter.ai/api/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${OPENROUTER_API_KEY}`,
-      "Content-Type": "application/json",
-      "HTTP-Referer": "https://kenkambi.github.io/claudechef",
-      "X-Title": "Claude Chef",
-    },
-    body: JSON.stringify({
-      model: "deepseek/deepseek-r1:free",
-      messages: [
-        {
-          role: "system",
-          content: `You are a helpful recipe generator. Use the ingredients given to suggest a recipe. Format in markdown. Use emojis.`,
+    const response = await fetch(
+      "https://openrouter.ai/api/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${OPENROUTER_API_KEY}`,
+          "Content-Type": "application/json",
+          "HTTP-Referer": "https://kenkambi.github.io/claudechef",
+          "X-Title": "Claude Chef",
         },
-        {
-          role: "user",
-          content: `I have ${ingredients.join(", ")}`,
-        },
-      ],
-    }),
-  })
-  const data = await response.json();
+        body: JSON.stringify({
+          model: "deepseek/deepseek-r1:free",
+          messages: [
+            {
+              role: "system",
+              content: SYSTEM_PROMPT,
+            },
+            {
+              role: "user",
+              content: `I have ${ingredientsString}. Please give me a recipe you'd recommend I make.`,
+            },
+          ],
+        }),
+      }
+    );
+    const data = await response.json();
 
-  return {
-    statusCode: 200,
-    body: JSON.stringify({ result: data.choices[0].message.content }),
-  };
-
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ result: data.choices[0].message.content }),
+    };
+  } catch (e) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: "Server error: " + e.message }),
+    };
+  }
 }
