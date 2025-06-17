@@ -7,39 +7,24 @@ const SYSTEM_PROMPT = `I am an ai assistant tasked with the role of generating a
 
 //Deepseek API call function 
 export async function deepseekGetRecipe(ingredientsArray) {
-  const ingredientsString = ingredientsArray.join(",");
-  const deepseekKey = import.meta.env.VITE_AI_API_KEY;
+  //const ingredientsString = ingredientsArray.join(",");
+  // const deepseekKey = import.meta.env.VITE_AI_API_KEY;
   try {
     const aiResponse = await fetch(
-      "https://openrouter.ai/api/v1/chat/completions",
+      "/.netlify/functions/getRecipe",
       {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${deepseekKey} `,
-          "HTTP-Referer": "https://kenkambi.github.io/claudechef", // Optional. Site URL for rankings on openrouter.ai.
-          "X-Title": "Claude Chef", // Optional. Site title for rankings on openrouter.ai.
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          model: "deepseek/deepseek-r1:free",
-          messages: [
-            {
-              role: "system",
-              content: SYSTEM_PROMPT,
-            },
-            {
-              role: "user",
-              content: `I have ${ingredientsString}. Please give me a recipe you'd recommend I make.`,
-            },
-          ],
-        }),
+        body: JSON.stringify({ ingredients: ingredientsArray }),
       }
     );
 
     const data = await aiResponse.json();
-    return data.choices[0].message.content;
+    return data.result;
   } catch (error) {
     console.error("Error fetching recipe:", error);
-    console.log("Error fetching data!")
+    console.log("Error generating recipe!")
   }
 }
