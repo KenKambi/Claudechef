@@ -3,6 +3,7 @@ import Generated from "./Generated";
 import { deepseekGetRecipe } from "./deepseek";
 import loadingGif from "./assets/Circles-menu-3.gif";
 
+//main function to handle ingredients inputs 
 export default function Recipe() {
   const [ingredients, setIngredients] = useState([]);
   const [generate, setGenerate] = useState("");
