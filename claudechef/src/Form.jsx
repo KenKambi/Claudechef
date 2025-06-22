@@ -1,5 +1,6 @@
 
 
+///function to practice different kind of inputs for forms
 
 export default function Form (){
 
