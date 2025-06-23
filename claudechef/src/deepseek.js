@@ -17,7 +17,7 @@ export async function deepseekGetRecipe(ingredients) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ ingredients: ingredientsArray }),
+        body: JSON.stringify({ ingredients }),
       }
     );
 
