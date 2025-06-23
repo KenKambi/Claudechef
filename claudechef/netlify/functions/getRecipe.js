@@ -36,7 +36,7 @@ export async function handler(event) {
         headers: {
           Authorization: `Bearer ${OPENROUTER_API_KEY}`,
           "Content-Type": "application/json",
-          "HTTP-Referer": "https://kenkambi.github.io/claudechef",
+          "HTTP-Referer": "https://myclaudechef.netlify.app",
           "X-Title": "Claude Chef",
         },
         body: JSON.stringify({
