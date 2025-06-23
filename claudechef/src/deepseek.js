@@ -6,7 +6,7 @@
 //                     Also, don't mention that you are an AI bot`;
 
 //Deepseek API call function 
-export async function deepseekGetRecipe(ingredientsArray) {
+export async function deepseekGetRecipe(ingredients) {
   //const ingredientsString = ingredientsArray.join(",");
   // const deepseekKey = import.meta.env.VITE_AI_API_KEY;
   try {
