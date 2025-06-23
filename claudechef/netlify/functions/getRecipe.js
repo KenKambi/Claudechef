@@ -54,7 +54,9 @@ export async function handler(event) {
         }),
       }
     );
-    const data = await response.json();
+    console.log("API response status:", response.status);
+const data = await response.json();
+console.log("API response body:", JSON.stringify(data));
 
     return {
       statusCode: 200,
