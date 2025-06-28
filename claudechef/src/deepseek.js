@@ -1,8 +1,7 @@
 
 //Deepseek API call function 
 export async function deepseekGetRecipe(ingredients) {
-  //const ingredientsString = ingredientsArray.join(",");
-  // const deepseekKey = import.meta.env.VITE_AI_API_KEY;
+  
   try {
     const aiResponse = await fetch(
       "/.netlify/functions/getRecipe",
