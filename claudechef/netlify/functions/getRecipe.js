@@ -55,6 +55,7 @@ export async function handler(event) {
         }),
       }
     );
+//error handling message 
     console.log("API response status:", response.status);
 const data = await response.json();
 console.log("API response body:", JSON.stringify(data));
