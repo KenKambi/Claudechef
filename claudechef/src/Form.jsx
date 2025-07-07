@@ -1,6 +1,6 @@
 //function to practice different kind of inputs for forms
-
 export default function Form (){
+
 
     function signUp (formData){
         const mytitle = formData.getAll("title")
