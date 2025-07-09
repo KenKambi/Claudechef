@@ -6,10 +6,16 @@ const SYSTEM_PROMPT = `I am an ai assistant tasked with the role of generating a
                     Also, don't mention that you are an AI bot`;
 
 export async function handler(event) {
+<<<<<<< HEAD
   const OPENROUTER_API_KEY = ``;
   console.log("Incoming event:", event);
 
   console.log("API KEY exists?", !!OPENROUTER_API_KEY);
+=======
+  const OPENROUTER_API_KEY =  process.env.OPENROUTER_API_KEY;
+  console.log("Incoming event:", event); // 🔍 Log event
+  console.log("API KEY exists?", !!OPENROUTER_API_KEY); // 🔍 Confirm key loaded
+>>>>>>> 617580e (api key)
 
 
   if (!OPENROUTER_API_KEY) {
