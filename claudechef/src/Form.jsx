@@ -1,4 +1,4 @@
-//function to practice different kind of inputs for forms
+//form inputs
 export default function Form (){
     function signUp (formData){
         const mytitle = formData.getAll("title")
