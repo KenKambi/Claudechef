@@ -8,7 +8,7 @@ export default function Form (){
             ...allData,
             mytitle
         }
-        console.log(myAllData)
+        //console.log(myAllData)
 
     }
 
