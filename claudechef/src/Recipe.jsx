@@ -34,7 +34,7 @@ export default function Recipe() {
   }
 
   async function getRecipe() {
-    // setGenerate((prevGenerate) => !prevGenerate);
+   
     setLoading(true);
     const ans = await deepseekGetRecipe(ingredients);
     setGenerate(ans);
