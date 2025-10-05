@@ -7,8 +7,8 @@ const SYSTEM_PROMPT = `I am an ai assistant tasked with the role of generating a
 
 export async function handler(event) {
   const OPENROUTER_API_KEY =  process.env.OPENROUTER_API_KEY;
-  //console.log("Incoming event:", event); // 🔍 Log event
-  //console.log("API KEY exists?"); // 🔍 Confirm key loaded
+  //console.log("Incoming event:", event); //
+  //console.log("API KEY exists?");
 
 
   if (!OPENROUTER_API_KEY) {
