@@ -5,7 +5,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENROUTER_API_KEY,
   defaultHeaders: {
     "HTTP-Referer": "https://myclaudechef.netlify.app", // Your live site URL
-    "X-Title": "Claude Chef", // Your site/app name
+    "X-Title": "Claude Chef", 
   },
 });
 

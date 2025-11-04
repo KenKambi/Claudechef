@@ -1,10 +1,11 @@
 import icon from "../src/assets/react.svg"
-//Svg file
+import {SiCodechef} from "react-icons/si"
+
 export default function Header() {
   return (
     <header>
       <nav className="navbar">
-        <img src={icon} alt="React Logo" />
+        <SiCodechef size={40}/> 
         <span>Claude Chef</span>
       </nav>
     </header>

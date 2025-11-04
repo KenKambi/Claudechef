@@ -1,19 +1,18 @@
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-
+  font-family: Cinzel, Helvetica, sans-serif;
+ background-color: white;
 }
 
 button {
   cursor: pointer;
+  font-family: Dancing script, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: large;
 }
 
-/* li:hover{
-    : "delete";
-} */
-
 header {
-  background-color: white;
+  background-color: rgb(243, 243, 243);
   position: fixed;
   width: 100%;
   top: 0;
@@ -25,21 +24,14 @@ header {
   justify-content: center;
   align-items: center;
   height: 50px;
-  box-shadow: 0 4px 8px grey;
+  box-shadow: 0 2px 4px grey;
 }
 
-.navbar > img {
-  animation: rotate 20s infinite linear;
+.navbar > span{
+  font-family: Cinzel, Helvetica, sans-serif;
+  font-weight: bold;
 }
 
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 .main-container {
   margin-left: 10px;
@@ -70,8 +62,29 @@ header {
    margin-left: 30px;
 }
 
+.main-container > section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.entry-container{
+  width: min-content;
+}
+
+.entry-container > label > input {
+  width: auto;
+  height: 30px;
+  border-radius: 3px;
+  font-size: large;
+}
 
 .entry-container > button {
+  margin-top: 5px;
+  height:30px;
+  width: 100%;
+  border-radius: 5px;
   background-color: black;
   color: antiquewhite;
 }

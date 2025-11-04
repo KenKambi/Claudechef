@@ -3,7 +3,6 @@ import Generated from "./Generated";
 import { deepseekGetRecipe } from "./deepseek";
 import loadingGif from "./assets/Circles-menu-3.gif";
 
-//main function to handle ingredients inputs 
 export default function Recipe() {
   const [ingredients, setIngredients] = useState([]);
   const [generate, setGenerate] = useState("");
@@ -49,6 +48,7 @@ export default function Recipe() {
 
   return (
     <main className="main-container">
+      <section>
       <form className="entry-container" onSubmit={handleIngredient}>
         <label htmlFor="ingredient">
           <input
@@ -60,6 +60,8 @@ export default function Recipe() {
         </label>
         <button> &#43; Add ingredient</button>
       </form>
+      </section>
+
 
       
       {ingredients.length <= 3 && (
