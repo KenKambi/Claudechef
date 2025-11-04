@@ -65,7 +65,7 @@ export default function Recipe() {
 
       
       {ingredients.length <= 3 && (
-        <p> Enter a list of at least three (4) ingredients above ...</p>
+        <p> Enter a list of at least four (4) ingredients above ...</p>
       )}
 
       {ingredients.length > 0 && <h1>Ingredients on hand...</h1>}
