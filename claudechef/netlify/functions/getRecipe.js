@@ -1,23 +1,32 @@
+import OpenAI from 'openai';
+
+const openai = new OpenAI({
+  baseURL: "https://openrouter.ai/api/v1",
+  apiKey: process.env.OPENROUTER_API_KEY,
+  defaultHeaders: {
+    "HTTP-Referer": "https://myclaudechef.netlify.app", // Your live site URL
+    "X-Title": "Claude Chef", // Your site/app name
+  },
+});
+
 const SYSTEM_PROMPT = `I am an ai assistant tasked with the role of generating a recipe \
-                    based on the list of ingredints given. \
-                    Use them plus other suggested ingredients to generate a recipe. \
-                    Make it interesting and use emojis. \
-                    Convert it into markdown in order to be rendered on a website page. \
-                    Also, don't mention that you are an AI bot`;
+based on the list of ingredints given. \
+Use them plus other suggested ingredients to generate a recipe. \
+Make it interesting and use emojis. \
+Convert it into markdown in order to be rendered on a website page. \
+Also, don't mention that you are an AI bot`;
 
 export async function handler(event) {
-  const OPENROUTER_API_KEY =  process.env.OPENROUTER_API_KEY;
- 
-  //console.log("API KEY exists?");
-
-
-  if (!OPENROUTER_API_KEY) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: "API key not found!" }),
-    };
-  }
   try {
+    const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
+
+    if (!OPENROUTER_API_KEY) {
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ error: "API key not found!" }),
+      };
+    }
+
     const { ingredients } = JSON.parse(event.body || "{}");
 
     if (!Array.isArray(ingredients)) {
@@ -29,41 +38,26 @@ export async function handler(event) {
 
     const ingredientsString = ingredients.join(", ");
 
-    const response = await fetch(
-      "https://openrouter.ai/api/v1/chat/completions",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${OPENROUTER_API_KEY}`,
-          "Content-Type": "application/json",
-          "HTTP-Referer": "https://myclaudechef.netlify.app",
-          "X-Title": "Claude Chef",
+    const completion = await openai.chat.completions.create({
+      model: "qwen/qwen-turbo",
+      messages: [
+        {
+          role: "system",
+          content: SYSTEM_PROMPT,
         },
-        body: JSON.stringify({
-          model: "deepseek/deepseek-r1:free",
-          messages: [
-            {
-              role: "system",
-              content: SYSTEM_PROMPT,
-            },
-            {
-              role: "user",
-              content: `I have ${ingredientsString}. Please give me a recipe you'd recommend I make.`,
-            },
-          ],
-        }),
-      }
-    );
-//error handling message 
-    console.log("API response status:", response.status);
-const data = await response.json();
-console.log("API response body:", JSON.stringify(data));
+        {
+          role: "user",
+          content: `I have ${ingredientsString}. Please give me a recipe you'd recommend I make.`,
+        },
+      ],
+    });
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ result: data.choices[0].message.content }),
+      body: JSON.stringify({ result: completion.choices[0].message.content }),
     };
   } catch (e) {
+     console.error("Server Error:", e);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: "Server error: " + e.message }),
