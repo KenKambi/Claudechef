@@ -39,7 +39,7 @@ export async function handler(event) {
     const ingredientsString = ingredients.join(", ");
 
     const completion = await openai.chat.completions.create({
-      model: "google/gemini-flash-1.5",
+      model: "meta-llama/llama-3.1-8b-instruct",
       messages: [
         {
           role: "system",
